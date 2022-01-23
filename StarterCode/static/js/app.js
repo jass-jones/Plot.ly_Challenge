@@ -39,18 +39,17 @@ function optionalChanged(selectedID) {
          panelDisplay.append("p").text(`${item[0]}: ${item[1]}`)
       });
  
-   // BAR CHART
  
    // Filter sample array data for the selected ID
    const idSample = data.samples.filter(item => parseInt(item.id) == selectedID);
    
-   // // Check values
+
    // console.log(typeof parseInt(item.id));
    // console.log(idSample[0].sample_values);  
    // console.log(idSample[0].otu_ids);  
    // console.log(idSample[0].otu_labels);  
    
-   // Slice top 10 sample values
+
  
    var sampleValue = idSample[0].sample_values.slice(0,10);
    sampleValue= sampleValue.reverse();
@@ -58,18 +57,11 @@ function optionalChanged(selectedID) {
    otuID = otuID.reverse();
    var otuLabels = idSample[0].otu_labels
    otuLabels = otuLabels.reverse();
- 
-   // // Check values
-   //  console.log(sampleValue);
-   //  console.log(otuID);
-   //  console.log(otuLabels);
- 
-   // Y axis of bar chart
+
  
    const yAxis = otuID.map(item => 'OTU' + " " + item);
       // console.log(yAxis);
    
-   // Define the layout and trace object, edit color and orientation
  
       const trace = {
       y: yAxis,
@@ -94,9 +86,6 @@ function optionalChanged(selectedID) {
  
       Plotly.newPlot('bar', [trace], layout,  {responsive: true});    
       
- // BUBBLE CHART
- 
- // Remove Sample value and otuID from individual
  
  var sampleValue1 =idSample[0].sample_values;
  var otuID1= idSample[0].otu_ids;
@@ -126,6 +115,5 @@ function optionalChanged(selectedID) {
  // Plot using Plotly
  Plotly.newPlot('bubble', [trace1], layout1);
  
- // BONUS: GAUGE CHART
  
 }
